@@ -1,6 +1,6 @@
 package pesel;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.BDDAssertions.then;
 
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class PESELValidatorScenarios {
         final boolean isPeselCorrect = peselValidator.validate("49040501580");
 
         // Then
-        assertThat(isPeselCorrect).isTrue();
+        then(isPeselCorrect).isTrue();
     }
 
     @Test
@@ -30,7 +30,7 @@ public class PESELValidatorScenarios {
         final boolean isPeselCorrect = peselValidator.validate("11040501580");
 
         // Then
-        assertThat(isPeselCorrect).isFalse();
+        then(isPeselCorrect).isFalse();
     }
 
     @Test
@@ -40,7 +40,7 @@ public class PESELValidatorScenarios {
         final boolean isPeselCorrect = peselValidator.validate("49040501580123");
 
         // Then
-        assertThat(isPeselCorrect).isFalse();
+        then(isPeselCorrect).isFalse();
     }
 
     @Test
@@ -50,6 +50,6 @@ public class PESELValidatorScenarios {
         final boolean isPeselCorrect = peselValidator.validate("11040X01580");
 
         // Then
-        assertThat(isPeselCorrect).isFalse();
+        then(isPeselCorrect).isFalse();
     }
 }
