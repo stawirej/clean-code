@@ -16,7 +16,7 @@ public class PESELStreamValidator implements Validator {
 
     private int calculateCheckSum(final String pesel) {
         return IntStream.range(0, WEIGHTS.length).reduce(0,
-            (sum, i) -> sum + (WEIGHTS[i] * getNumericValue(pesel.charAt(i))));
+            (controlSum, i) -> controlSum + (WEIGHTS[i] * getNumericValue(pesel.charAt(i))));
     }
 
     private boolean validateCheckSum(final String pesel, final int checkSum) {
