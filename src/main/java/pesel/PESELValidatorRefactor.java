@@ -1,5 +1,7 @@
 package pesel;
 
+import static java.lang.Character.getNumericValue;
+
 import com.google.common.base.Preconditions;
 
 class PESELValidatorRefactor implements Validator {
@@ -28,15 +30,15 @@ class PESELValidatorRefactor implements Validator {
     }
 
     private Integer getLastDigit(final String pesel) {
-        final String lastCharacter = pesel.substring(pesel.length() - 1);
-        return Integer.parseInt(lastCharacter);
+        final char lastCharacter = pesel.charAt(pesel.length() - 1);
+        return getNumericValue(lastCharacter);
     }
 
     private int calculateControlSum(final String pesel) {
         int sum = 0;
         int peselDigit;
         for (int i = 0; i < pesel.length() - 1; i++) {
-            peselDigit = Integer.parseInt(pesel.substring(i, i + 1));
+            peselDigit = getNumericValue(pesel.charAt(i));
             sum += WEIGHTS[i] * peselDigit;
         }
         return sum;
