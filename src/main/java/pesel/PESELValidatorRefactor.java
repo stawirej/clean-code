@@ -13,9 +13,9 @@ class PESELValidatorRefactor implements Validator {
     public boolean validate(final String pesel) {
         try {
             validatePeselLength(pesel);
-            final int sum = calculateControlSum(pesel);
+            final int controlSum = calculateControlSum(pesel);
             final Integer lastDigit = getLastDigit(pesel);
-            return validateControlSum(sum, lastDigit);
+            return validateControlSum(controlSum, lastDigit);
         } catch (final IllegalArgumentException exception) {
             return false;
         }
@@ -35,12 +35,12 @@ class PESELValidatorRefactor implements Validator {
     }
 
     private int calculateControlSum(final String pesel) {
-        int sum = 0;
+        int controlSum = 0;
         int peselDigit;
         for (int i = 0; i < pesel.length() - 1; i++) {
             peselDigit = getNumericValue(pesel.charAt(i));
-            sum += WEIGHTS[i] * peselDigit;
+            controlSum += WEIGHTS[i] * peselDigit;
         }
-        return sum;
+        return controlSum;
     }
 }
