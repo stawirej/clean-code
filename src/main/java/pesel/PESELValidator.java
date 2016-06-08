@@ -12,15 +12,15 @@ class PESELValidator implements Validator {
         final int last;
         int peselDigit;
 
+        if (str.length() != 11) {
+            return false;
+        }
+
         // calculate control sum
         for (int i = 0; i < str.length() - 1; i++) {
             try {
                 peselDigit = Integer.parseInt(str.substring(i, i + 1));
             } catch (final NumberFormatException ex) {
-                return false;
-            }
-
-            if (i > 9) {
                 return false;
             }
 
