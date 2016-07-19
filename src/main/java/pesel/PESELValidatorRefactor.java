@@ -25,7 +25,8 @@ class PESELValidatorRefactor implements Validator {
         Preconditions.checkArgument(pesel.length() == PESEL_LENGTH, "Invalid PESEL length.");
     }
 
-    private boolean validateControlSum(final int sum, final Integer lastDigit) {
+    private boolean validateControlSum(final int sum, final Integer lastDigit)
+    {
         return (10 - sum % 10) % 10 == lastDigit;
     }
 
