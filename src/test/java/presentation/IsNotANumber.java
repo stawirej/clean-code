@@ -14,7 +14,7 @@ public class IsNotANumber extends TypeSafeMatcher<Double> {
 
     @Override
     public void describeTo(final Description description) {
-        description.appendText("not a number");
+        description.appendText("not lend number");
     }
 
     @Factory

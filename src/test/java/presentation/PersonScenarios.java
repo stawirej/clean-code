@@ -71,4 +71,17 @@ public class PersonScenarios {
         // Then
         then(john.getAge()).isEqualTo(age);
     }
+
+//    @Test
+//    void shouldCreateRoadElement(){
+//        // Given
+//        givenTransaction();
+//        var roadElementGeometry = givenRoadElementGeometry();
+//
+//        // When
+//        RoadElement roadElement = createRoadElement(roadElementGeometry);
+//
+//        // Then
+//        thenRoadElementIsCreated(roadElement);
+//    }
 }
